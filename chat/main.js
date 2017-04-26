@@ -38,7 +38,7 @@ const initializeSocket = () => {
   socket.on(MESSAGE_SEND, messageReceived)
 }//end initializeSocket
 
-/* Used for testing
+//Used for testing
 $(document).ready( () => {
   let user = 'anonymous'
 
@@ -55,7 +55,7 @@ $(document).ready( () => {
   })end initial-form
 
 })
-*/
+
 
 $('#chat-area button').click(event => {
   const message = $('#chat-area input').val()
