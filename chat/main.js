@@ -1,26 +1,15 @@
-import moment from 'moment'
-import {LOBBY, USER_JOINED, MESSAGE_SEND} from '../constants/events'
+import {LOBBY, USER_JOINED, MESSAGE_SEND} from 'constants_chat'
 
 const socket = io()
 
 const appendMessage = message => {
   $('.message').append(message)
-  $('time.timeago').timeago()
 }
 
-const messageElement = ({timestamp, user, message}) =>
+const messageElement = ({user, message}) =>
   $('<div>', {class: 'message'})
   .text(message)
-  .prepend(timestampElement( timestamp ), userElement( user ))
-
-const timestampElement = time => {
-  const element = $('<time>', {
-    class: 'timeago',
-    datetime: moment(time).format()
-  }).text(moment( time ).format('hh:mm:ss'))
-
-  return element[0]
-}
+  .prepend(userElement( user ))
 
 const userElement = userName =>
   $('<span>', {class: 'user'}).text(userName)[0]
@@ -38,10 +27,10 @@ const initializeSocket = () => {
   socket.on(MESSAGE_SEND, messageReceived)
 }//end initializeSocket
 
-//Used for testing
 $(document).ready( () => {
   let user = 'anonymous'
-
+  
+  //used for testing since cannot get username from database
   $('initial-form button').click(event => {
     user = $('#who-are-you').val()
    
@@ -49,18 +38,16 @@ $(document).ready( () => {
     $('#chat-area').show()
 
     initializeSocket()
-    socket.emit(USER_JOINED, {user, timestamp:Date.now() })
+    socket.emit(USER_JOINED, {user})
 
     return false
-  })end initial-form
+  })//end initial-form
 
-})
-
-
-$('#chat-area button').click(event => {
-  const message = $('#chat-area input').val()
-  $('#chat-area input').val('')
+  $('#chat-area button').click(event => {
+    const message = $('#chat-area input').val()
+    $('#chat-area input').val('')
   
-  socket.emit(MESSAGE_SEND, {user, timestamp:Date.now(), message})
- })
+    socket.emit(MESSAGE_SEND, {user, message})
+  })//end chatarea
+})//end frontend
     
