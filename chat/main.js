@@ -1,4 +1,4 @@
-import {LOBBY, USER_JOINED, MESSAGE_SEND} from 'constants_chat'
+import {LOBBY, USER_JOINED, MESSAGE_SEND} from '/constants_chat'
 
 const socket = io()
 
