@@ -1,5 +1,5 @@
 const socketIo = require( 'socket.io' )
-const {USER_JOINED, MESSAGE_SEND } = require( '../constants/events' )
+const {USER_JOINED, MESSAGE_SEND } = require( '../chat/constants_chat' )
 
 const init = (app, server) => {
      const io = socketIo(server)
