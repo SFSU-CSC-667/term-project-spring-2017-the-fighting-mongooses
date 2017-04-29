@@ -2,20 +2,6 @@ extends layout
 
 
 
-doctype html
-html(lang='en')
-	head
-		
-
-		meta(charset='utf-8')
-		title Advance Wars Clone - Game Lobby
-		meta(name='viewport', content='width=device-width, initial-scale=1.0')
-		meta(name='description', content='Website for SFSU Csc667 Final Project')
-		meta(name='author', content='Josh Nagel, Jason Newman, Evan Wong, Davy Khok')
-		link(href='/stylesheets/bootstrap.css', rel='stylesheet')
-		link(href='/stylesheets/bootstrap-responsive.css', rel='stylesheet')
-		link(href='/stylesheets/style.css', rel='stylesheet')
-	body
 		block content
 			.container
 			div.header_content
@@ -41,7 +27,6 @@ html(lang='en')
 								td
 									form(action='', method='get')
 										input(type='submit', value='Join Game')
-				script(src='/main.js')
 				div.chat_content
 					h3 Chat box goes here
 						#chat-area
