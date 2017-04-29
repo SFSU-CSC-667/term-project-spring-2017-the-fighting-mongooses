@@ -3,7 +3,7 @@ const { USER_JOINED, MESSAGE_SEND } = require( '../chat/constants_chat' )
 
 const init = ( app, server ) => {
   const io = socketIo( server )
-
+   
   app.set( 'io', io )
 
   io.on( 'connection', socket => {

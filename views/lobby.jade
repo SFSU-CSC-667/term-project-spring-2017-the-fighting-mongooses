@@ -5,8 +5,8 @@ extends layout
 doctype html
 html(lang='en')
 	head
-		script(src='/socket.io/socket.io.js')
-		script(src='../chat/main.js')
+		
+
 		meta(charset='utf-8')
 		title Advance Wars Clone - Game Lobby
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -41,7 +41,7 @@ html(lang='en')
 								td
 									form(action='', method='get')
 										input(type='submit', value='Join Game')
-
+				script(src='/main.js')
 				div.chat_content
 					h3 Chat box goes here
 						#chat-area
