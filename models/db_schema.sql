@@ -30,7 +30,9 @@ CREATE TABLE IF NOT EXISTS games
   map INTEGER NOT NULL,
   totalTurns INTEGER,
   totalPlayers INTEGER,
-  currentPlayerTurn INTEGER
+  maxPlayers INTEGER,
+  currentPlayerTurn INTEGER,
+  started BOOLEAN
 );
 
 -- Players Table
@@ -40,6 +42,7 @@ CREATE TABLE IF NOT EXISTS players
   username VARCHAR(25),
   gameID INTEGER,
   userID INTEGER,
+  playerNumber INTEGER,
   income INTEGER,
   wallet INTEGER,
   co INTEGER,
@@ -53,18 +56,18 @@ CREATE TABLE IF NOT EXISTS units
   id SERIAL PRIMARY KEY,
   gameID INTEGER,
   owner INTEGER,
-  posX INTEGER,
-  posY INTEGER,
+  xpos INTEGER,
+  ypos INTEGER,
   health INTEGER,
-  type INTEGER
+  type VARCHAR(25),
+  moved BOOLEAN
 );
 
 -- UnitTypes Table
 CREATE TABLE IF NOT EXISTS unitTypes
 (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(25),
-  sprite VARCHAR(100),
+  type VARCHAR(25),
   cost INTEGER,
   damage INTEGER,
   health INTEGER,
@@ -79,21 +82,19 @@ CREATE TABLE IF NOT EXISTS buildings
 (
   id SERIAL PRIMARY KEY,
   gameID INTEGER,
-  buildingID INTEGER,
   owner INTEGER,
-  posX INTEGER,
-  posY INTEGER,
-  health INTEGER,
-  type INTEGER
+  xPos INTEGER,
+  yPos INTEGER,
+  type VARCHAR(25)
 );
 
 -- BuildingTypes Table
 CREATE TABLE IF NOT EXISTS buildingTypes
 (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(25),
+  type VARCHAR(25),
   sprite VARCHAR(100),
-  income INTEGER
+  income VARCHAR(25)
 );
 
 -- Maps Table

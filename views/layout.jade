@@ -11,12 +11,6 @@ html
 	body
 		script(src='/socket.io/socket.io.js')
 		script(src='http://code.jquery.com/jquery-1.7.1.min.js')
-		//- 
-			#err
-				if errors
-					for each errors
-						div(class='alert alert-danger')
-							var msg = {errMsg:'Shit be broke!'}
 
 		.container
 			div.header_content
@@ -31,16 +25,21 @@ html
 				div.login
 					h3(name='header_title') Advance Wars Clone - Csc 667 - Fighting Mongooses
 					div.user-logo
-						img(src='', alt='user photo')
-						a(id='login-out', href='#') Logout
-					a(href='#'): img.logo(src='#', alt='game logo')
+						if user
+							strong= "Welcome " + user.username + "!"
+							img.profile(src='/images/Avatar_default.png', alt='user photo')
+							a(id='login-out', href='/logout') Logout
+						else
+							img.profile(src='/images/Avatar_default.png', alt='user photo')
+							a(id='login-in', href='/') Login or Create Account
+					a(href='/'): img.logo(src='/images/Csc667_logo.png', alt='game logo')
 					nav(class='navbar navbar-default')
 						div(class='container-fluid')
 							ul(class='nav navbar-nav')
-								li
+								li.active
 									a(href='/') Home
 								li
-									a(href='/account') Account
+									a(href='/profile') Account
 								li
 									a(href='/registration') Register
 								li

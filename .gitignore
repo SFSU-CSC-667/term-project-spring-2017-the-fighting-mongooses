@@ -1,5 +1,7 @@
 /node_modules
+/socket/tags
 /bin/tags
 /routes/tags
 /public/game/tags
 /tags
+*.swp
